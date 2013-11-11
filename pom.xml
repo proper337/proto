@@ -19,6 +19,7 @@
       </activation>
       <properties>
         <hadoop.version>1.1.1</hadoop.version>
+        <hadoop.avro.version>1.3.3</hadoop.avro.version>
       </properties>
       <dependencies>
         <dependency>
@@ -30,6 +31,11 @@
           <groupId>org.apache.hadoop</groupId>
           <artifactId>hadoop-test</artifactId>
           <version>${hadoop.version}</version>
+        </dependency>
+        <dependency>
+          <groupId>org.apache.hadoop</groupId>
+          <artifactId>avro</artifactId>
+          <version>1.3.3</version>
         </dependency>
         <!--  Required to run -->
         <dependency>
@@ -60,6 +66,10 @@
           <plugin>
             <groupId>org.apache.maven.plugins</groupId>
             <artifactId>maven-compiler-plugin</artifactId>
+            <configuration>
+              <source>1.7</source>
+              <target>1.7</target>
+            </configuration>
             <!--
             <configuration>
               <excludes>
@@ -71,6 +81,30 @@
               </excludes>
             </configuration>
             -->
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-source-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-sources</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
+          </plugin>
+          <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-javadoc-plugin</artifactId>
+            <executions>
+              <execution>
+                <id>attach-javadocs</id>
+                <goals>
+                  <goal>jar</goal>
+                </goals>
+              </execution>
+            </executions>
           </plugin>
         </plugins>
       </build>
@@ -121,6 +155,69 @@
         	<groupId>org.hamcrest</groupId>
         	<artifactId>hamcrest-all</artifactId>
         	<version>1.3</version>
+        </dependency>
+        <!-- mlockall() -->
+        <dependency>
+        	<groupId>net.java.dev.jna</groupId>
+        	<artifactId>jna</artifactId>
+        	<version>3.2.7</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.mortbay.jetty</groupId>
+        	<artifactId>jetty</artifactId>
+        	<version>7.0.0.pre5</version>
+        </dependency>
+        <dependency>
+        	<groupId>javax.servlet</groupId>
+        	<artifactId>servlet-api</artifactId>
+        	<version>2.5</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.slf4j</groupId>
+        	<artifactId>slf4j-log4j12</artifactId>
+        	<version>1.7.5</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.sleepycat</groupId>
+        	<artifactId>je</artifactId>
+        	<version>5.0.73</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.jdom</groupId>
+        	<artifactId>jdom</artifactId>
+        	<version>1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>com.google.caliper</groupId>
+        	<artifactId>caliper</artifactId>
+        	<version>1.0-beta-1</version>
+        	<classifier>all</classifier>
+        </dependency>
+        <dependency>
+        	<groupId>commons-cli</groupId>
+        	<artifactId>commons-cli</artifactId>
+        	<version>1.2</version>
+        </dependency>
+        <dependency>
+        	<groupId>commons-logging</groupId>
+        	<artifactId>commons-logging</artifactId>
+        	<version>1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>commons-logging</groupId>
+        	<artifactId>commons-logging-api</artifactId>
+        	<version>1.1</version>
+        </dependency>
+        <dependency>
+        	<groupId>org.apache.mahout</groupId>
+        	<artifactId>mahout</artifactId>
+        	<version>0.8</version>
+        	<type>pom</type>
+        </dependency>
+        <dependency>
+        	<groupId>org.mockito</groupId>
+        	<artifactId>mockito-all</artifactId>
+        	<version>1.9.0</version>
         </dependency>
   </dependencies>
 </project>
